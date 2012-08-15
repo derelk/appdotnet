@@ -1,3 +1,13 @@
+0.0.3 / 2012-08-15
+==================
+
+  * Greatly improved README.md
+  * Added users part of the official api
+  * Added unit tests for users part of the api
+  * Downgrade to node v0.6.x
+  * Added example directory with express example
+  * config.json will now be ignored, therefore we have config.example.json
+
 0.0.2 / 2012-08-15
 ==================
 
