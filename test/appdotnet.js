@@ -95,4 +95,22 @@ describe('AppDotNet', function () {
       });
     });
   });
+
+  describe('object.checkToken()', function () {
+    it('returns an auth object', function (done) {
+      client.checkToken(function (err, auth) {
+        should.exist(auth);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.checkToken(function (err, auth) {
+        should.not.exist(auth);
+        should.exist(err);
+        done();
+      });
+    });
+  });
 });
