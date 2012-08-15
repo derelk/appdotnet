@@ -1,3 +1,11 @@
+0.1.0 / 2012-08-16
+==================
+
+  * Added post part of the official api
+  * Added unit tests for post part
+  * Removed engine field completely as it was causing problems
+  * Some fixes in package.json (new dependency)
+
 0.0.3 / 2012-08-15
 ==================
 
