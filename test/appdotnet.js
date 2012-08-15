@@ -154,6 +154,24 @@ describe('AppDotNet', function () {
     });
   });
 
+  describe('object.retrievePostReplies()', function () {
+    it('returns post objects', function (done) {
+      client.retrievePostReplies(savedPostId, {}, function (err, posts) {
+        should.exist(posts);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.retrievePostReplies(savedPostId, {}, function (err, posts) {
+        should.not.exist(posts);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
   describe('object.deletePost()', function () {
     it('returns a post object', function (done) {
       client.deletePost(savedPostId, function (err, post) {
