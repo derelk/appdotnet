@@ -16,7 +16,7 @@
     "should": "~1.1.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec --require should"
+    "test": "./node_modules/.bin/mocha --reporter spec --timeout 95000 --slow 1000"
   },
   "repository": {
     "type": "git",
