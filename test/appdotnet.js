@@ -172,6 +172,24 @@ describe('AppDotNet', function () {
     });
   });
 
+  describe('object.deletePost()', function () {
+    it('returns a post object', function (done) {
+      client.deletePost(savedPostId, function (err, post) {
+        should.exist(post);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.deletePost(savedPostId, function (err, post) {
+        should.not.exist(post);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
   describe('object.retrieveCreatedPosts()', function () {
     it('returns post objects', function (done) {
       client.retrieveCreatedPosts(config.user_id, {}, function (err, posts) {
@@ -190,18 +208,72 @@ describe('AppDotNet', function () {
     });
   });
 
-  describe('object.deletePost()', function () {
-    it('returns a post object', function (done) {
-      client.deletePost(savedPostId, function (err, post) {
-        should.exist(post);
+  describe('object.retrieveMentions()', function () {
+    it('returns post objects', function (done) {
+      client.retrieveMentions(config.user_id, {}, function (err, posts) {
+        should.exist(posts);
         should.not.exist(err);
         done();
       });
     });
 
     it('returns an error when not authorized', function (done) {
-      errorClient.deletePost(savedPostId, function (err, post) {
-        should.not.exist(post);
+      errorClient.retrieveMentions(config.user_id, {}, function (err, posts) {
+        should.not.exist(posts);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.retrievePersonalStream()', function () {
+    it('returns post objects', function (done) {
+      client.retrievePersonalStream({}, function (err, posts) {
+        should.exist(posts);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.retrievePersonalStream({}, function (err, posts) {
+        should.not.exist(posts);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.retrieveGlobalStream()', function () {
+    it('returns post objects', function (done) {
+      client.retrieveGlobalStream({}, function (err, posts) {
+        should.exist(posts);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.retrieveGlobalStream({}, function (err, posts) {
+        should.not.exist(posts);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.retrieveTaggedPosts()', function () {
+    it('returns post objects', function (done) {
+      client.retrieveTaggedPosts(config.tag, {}, function (err, posts) {
+        should.exist(posts);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.retrieveTaggedPosts(config.tag, {}, function (err, posts) {
+        should.not.exist(posts);
         should.exist(err);
         done();
       });
