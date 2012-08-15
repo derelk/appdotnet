@@ -2,6 +2,7 @@
   "test": {
     "access_token": "",
     "user_id": "1",
+    "tag": "nodejs",
     "post_data": {
       "text": "this is an example unit test text"
     }
