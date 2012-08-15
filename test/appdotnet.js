@@ -113,4 +113,22 @@ describe('AppDotNet', function () {
       });
     });
   });
+
+  describe('object.createPost()', function () {
+    it('returns a post object', function (done) {
+      client.createPost(config.post_data, function (err, post) {
+        should.exist(post);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.createPost(config.post_data, function (err, post) {
+        should.not.exist(post);
+        should.exist(err);
+        done();
+      });
+    });
+  });
 });
