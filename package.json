@@ -6,7 +6,7 @@
   "licence": "MIT",
   "main": "lib/appdotnet.js",
   "engines": {
-    "node": "~0.8.6"
+    "node": "~0.6.18"
   },
   "dependencies": {
     "request": "~2.10.0"
