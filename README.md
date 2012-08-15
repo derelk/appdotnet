@@ -8,7 +8,7 @@ A wrapper for the app.net http stream api, following node idioms.
 Current State
 -------------
 
-app.net's api is not yet stable and is incomplete. Right now, this module only supports authentication and user part of the api. Next one is posts.
+app.net's api is not yet stable and is incomplete. Right now, this module supports all working parts of the official api (auth, user and post).
 
 
 See https://github.com/appdotnet/api-spec for the state of the official api.
@@ -28,6 +28,188 @@ To run the unit tests, there are several steps to do:
   3. just type `npm test`
 
 All tests run against the official app.net api, so be sure to have an internet connection. When tests are timing out, try to increase the `scripts.test -> --timeout` value in `package.json`.
+
+
+
+Examples
+--------
+
+The following examples are generated from the unit testing code. If you want to se running examples, be sure to checkout the `examples/` directory in this repository.
+
+The `examples/express.js` file is worth a look, especially if you are interested in the creation of an auth token and the instanciation of an object. 
+
+**Also be sure to checkout the complete api description at the bottom.**
+
+
+### AppDotNet
+
+#### object.getUser()
+returns a user object.
+
+```js
+client.getUser(config.user_id, function (err, user) {
+  should.exist(user);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.followUser()
+returns a user object.
+
+```js
+client.followUser(config.user_id, function (err, user) {
+  should.exist(user);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.unfollowUser()
+returns a user object.
+
+```js
+client.unfollowUser(config.user_id, function (err, user) {
+  should.exist(user);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.listFollowing()
+returns an error when not authorized.
+
+```js
+errorClient.listFollowing(config.user_id, function (err, users) {
+  should.not.exist(users);
+  should.exist(err);
+  done();
+});
+```
+
+#### object.listFollowers()
+returns an error when not authorized.
+
+```js
+errorClient.listFollowers(config.user_id, function (err, users) {
+  should.not.exist(users);
+  should.exist(err);
+  done();
+});
+```
+
+#### object.checkToken()
+returns an auth object.
+
+```js
+client.checkToken(function (err, auth) {
+  should.exist(auth);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.createPost()
+returns a post object.
+
+```js
+client.createPost(config.post_data, function (err, post) {
+  // save this for later use
+  savedPostId = post.id;
+
+  should.exist(post);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrievePost()
+returns a post object.
+
+```js
+client.retrievePost(savedPostId, function (err, post) {
+  should.exist(post);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrievePostReplies()
+returns post objects.
+
+```js
+client.retrievePostReplies(savedPostId, {}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.deletePost()
+returns a post object.
+
+```js
+client.deletePost(savedPostId, function (err, post) {
+  should.exist(post);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrieveCreatedPosts()
+returns post objects.
+
+```js
+client.retrieveCreatedPosts(config.user_id, {}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrieveMentions()
+returns post objects.
+
+```js
+client.retrieveMentions(config.user_id, {}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrievePersonalStream()
+returns post objects.
+
+```js
+client.retrievePersonalStream({}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrieveGlobalStream()
+returns post objects.
+
+```js
+client.retrieveGlobalStream({}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
+
+#### object.retrieveTaggedPosts()
+returns post objects.
+
+```js
+client.retrieveTaggedPosts(config.tag, {}, function (err, posts) {
+  should.exist(posts);
+  should.not.exist(err);
+  done();
+});
+```
 
 
 
@@ -138,110 +320,109 @@ List users following a user with the given `id` and callback `cb(err, users)`.
 
 * **Function** *cb* 
 
+### object.checkToken(cb)
 
+Check current access token and callback `cb(err, auth)`.
 
-Examples
---------
+#### Params: 
 
-The following examples are generated from the unit testing code. If you want to se running examples, be sure to checkout the `examples` directory in this repository.
+* **Function** *cb* 
 
-### TOC
-   - [AppDotNet](#appdotnet)
-     - [object.getUser()](#appdotnet-objectgetuser)
-     - [object.followUser()](#appdotnet-objectfollowuser)
-     - [object.unfollowUser()](#appdotnet-objectunfollowuser)
-     - [object.listFollowing()](#appdotnet-objectlistfollowing)
-     - [object.listFollowers()](#appdotnet-objectlistfollowers)
-<a name=""></a>
- 
-<a name="appdotnet"></a>
-### AppDotNet
-<a name="appdotnet-objectgetuser"></a>
-#### object.getUser()
-returns a user object.
+### object.createPost(data, cb)
 
-```js
-client.getUser(config.user_id, function (err, user) {
-  should.exist(user);
-  should.not.exist(err);
-  done();
-});
-```
+Create a post with `data` and callback `cb(err, post)`.
 
-returns an error when not authorized.
+#### Params: 
 
-```js
-errorClient.getUser(config.user_id, function (err, user) {
-  should.not.exist(user);
-  should.exist(err);
-  done();
-});
-```
+* **Object** *data* for the post
 
-<a name="appdotnet-objectfollowuser"></a>
-#### object.followUser()
-returns a user object.
+* **Function** *cb* 
 
-```js
-client.followUser(config.user_id, function (err, user) {
-  should.exist(user);
-  should.not.exist(err);
-  done();
-});
-```
+### object.retrievePost(id, cb)
 
-returns an error when not authorized.
+Retrieve a post with `id` and callback `cb(err, post)`.
 
-```js
-errorClient.followUser(config.user_id, function (err, user) {
-  should.not.exist(user);
-  should.exist(err);
-  done();
-});
-```
+#### Params: 
 
-<a name="appdotnet-objectunfollowuser"></a>
-#### object.unfollowUser()
-returns a user object.
+* **String** *id* of the post
 
-```js
-client.unfollowUser(config.user_id, function (err, user) {
-  should.exist(user);
-  should.not.exist(err);
-  done();
-});
-```
+* **Function** *cb* 
 
-returns an error when not authorized.
+### object.retrievePostReplies(id, filters, cb)
 
-```js
-errorClient.unfollowUser(config.user_id, function (err, user) {
-  should.not.exist(user);
-  should.exist(err);
-  done();
-});
-```
+Retrieve the replies to a post with `id` using `filters` and callback `cb(err, posts)`.
 
-<a name="appdotnet-objectlistfollowing"></a>
-#### object.listFollowing()
-returns an error when not authorized.
+#### Params: 
 
-```js
-errorClient.listFollowing(config.user_id, function (err, users) {
-  should.not.exist(users);
-  should.exist(err);
-  done();
-});
-```
+* **String** *id* of a post
 
-<a name="appdotnet-objectlistfollowers"></a>
-#### object.listFollowers()
-returns an error when not authorized.
+* **Object** *filters* 
 
-```js
-errorClient.listFollowers(config.user_id, function (err, users) {
-  should.not.exist(users);
-  should.exist(err);
-  done();
-});
-```
+* **Function** *cb* 
+
+### object.deletePost(id, cb)
+
+Delete a post with `id` and callback `cb(err, post)`.
+
+#### Params: 
+
+* **String** *id* of the post
+
+* **Function** *cb* 
+
+### object.retrieveCreatedPosts(id, filters, cb)
+
+Retrieve posts created by a user with `id` using `filters` and callback `cb(err, posts)`.
+
+#### Params: 
+
+* **String** *id* of a user
+
+* **Object** *filters* 
+
+* **Function** *cb* 
+
+### object.retrieveMentions(id, filters, cb)
+
+Retrieve posts mentioning a user with `id` using `filters` and callback `cb(err, posts)`.
+
+#### Params: 
+
+* **String** *id* of a user
+
+* **Object** *filters* 
+
+* **Function** *cb* 
+
+### object.retrievePersonalStream(filters, cb)
+
+Retrieve logged in user's personalized stream using `filters` and callback `cb(err, posts)`.
+
+#### Params: 
+
+* **Object** *filters* 
+
+* **Function** *cb* 
+
+### object.retrieveGlobalStream(filters, cb)
+
+Retrieve the global stream using `filters` and callback `cb(err, posts)`.
+
+#### Params: 
+
+* **Object** *filters* 
+
+* **Function** *cb* 
+
+### object.retrieveTaggedPosts(tag, filters, cb)
+
+Retrieve tagged posts with `tag` using `filters` and callback `cb(err, posts)`.
+
+#### Params: 
+
+* **String** *tag* 
+
+* **Object** *filters* 
+
+* **Function** *cb* 
+
