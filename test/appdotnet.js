@@ -3,7 +3,8 @@ var AppDotNet = require('../'),
     config = require('../config.json').test;
 
 var client      = AppDotNet.create(config.access_token),
-    errorClient = AppDotNet.create('');
+    errorClient = AppDotNet.create(''),
+    savedPostId = null;
 
 describe('AppDotNet', function () {
   describe('object.getUser()', function () {
@@ -117,6 +118,9 @@ describe('AppDotNet', function () {
   describe('object.createPost()', function () {
     it('returns a post object', function (done) {
       client.createPost(config.post_data, function (err, post) {
+        // save this for later use
+        savedPostId = post.id;
+
         should.exist(post);
         should.not.exist(err);
         done();
@@ -125,6 +129,42 @@ describe('AppDotNet', function () {
 
     it('returns an error when not authorized', function (done) {
       errorClient.createPost(config.post_data, function (err, post) {
+        should.not.exist(post);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.retrievePost()', function () {
+    it('returns a post object', function (done) {
+      client.retrievePost(savedPostId, function (err, post) {
+        should.exist(post);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.retrievePost(savedPostId, function (err, post) {
+        should.not.exist(post);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.deletePost()', function () {
+    it('returns a post object', function (done) {
+      client.deletePost(savedPostId, function (err, post) {
+        should.exist(post);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.deletePost(savedPostId, function (err, post) {
         should.not.exist(post);
         should.exist(err);
         done();
