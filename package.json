@@ -5,9 +5,6 @@
   "author": "Damien Klinnert <mail@damienklinnert.com>",
   "licence": "MIT",
   "main": "lib/appdotnet.js",
-  "engines": {
-    "node": "~0.6.x"
-  },
   "dependencies": {
     "request": "~2.10.0",
     "objtoquery": "~1.0.0"
