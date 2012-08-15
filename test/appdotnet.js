@@ -6,7 +6,7 @@ var client      = AppDotNet.create(config.access_token),
     errorClient = AppDotNet.create('');
 
 describe('AppDotNet', function () {
-  describe('.getUser()', function () {
+  describe('object.getUser()', function () {
     it('returns a user object', function (done) {
       client.getUser(config.user_id, function (err, user) {
         should.exist(user);
@@ -24,7 +24,7 @@ describe('AppDotNet', function () {
     });
   });
 
-  describe('.followUser()', function () {
+  describe('object.followUser()', function () {
     it('returns a user object', function (done) {
       client.followUser(config.user_id, function (err, user) {
         should.exist(user);
@@ -42,7 +42,7 @@ describe('AppDotNet', function () {
     });
   });
 
-  describe('.unfollowUser()', function () {
+  describe('object.unfollowUser()', function () {
     it('returns a user object', function (done) {
       client.unfollowUser(config.user_id, function (err, user) {
         should.exist(user);
@@ -60,7 +60,7 @@ describe('AppDotNet', function () {
     });
   });
 
-  describe('.listFollowing()', function () {
+  describe('object.listFollowing()', function () {
     it('returns user objects', function (done) {
       client.listFollowing(config.user_id, function (err, users) {
         should.exist(users);
@@ -78,7 +78,7 @@ describe('AppDotNet', function () {
     });
   });
 
-  describe('.listFollowers()', function () {
+  describe('object.listFollowers()', function () {
     it('returns user objects', function (done) {
       client.listFollowers(config.user_id, function (err, users) {
         should.exist(users);
