@@ -1,6 +1,9 @@
 {
   "test": {
     "access_token": "",
-    "user_id": "1"
+    "user_id": "1",
+    "post_data": {
+      "text": "this is an example unit test text"
+    }
   }
 }
