@@ -31,7 +31,7 @@ app.configure(function () {
   app.use(express.query());
 
   app.get('/', function (req, res) {
-    var uri = AppDotNet.createAuthenticateUri(config);
+    var uri = AppDotNet.createAuthenticationUri(config);
     res.redirect(uri);
   });
 
