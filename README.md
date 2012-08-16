@@ -45,6 +45,27 @@ There are some applications already using this library, checkout https://npmjs.o
 
 ### AppDotNet
 
+#### AppDotNet.createAuthenticationUri()
+returns an uriencoded string.
+
+```js
+var params = {
+  client_id: '9ah9has9hsaf9hasf9hfsa9hfsa9hsafhhasoh',
+  redirect_uri: 'http://localhost:3000/cb',
+  scope: 'export write_post'
+};
+
+var expectedUri = AppDotNet.authHost
+                + '/oauth/authenticate'
+                + '?client_id=9ah9has9hsaf9hasf9hfsa9hfsa9hsafhhasoh'
+                + '&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcb'
+                + '&scope=export%20write_post'
+                + '&response_type=code';
+
+AppDotNet.createAuthenticationUri(params).should.equal(expectedUri);
+```
+
+
 #### object.getUser()
 returns a user object.
 
