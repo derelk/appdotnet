@@ -34,9 +34,9 @@ All tests run against the official app.net api, so be sure to have an internet c
 Examples
 --------
 
-The following examples are generated from the unit testing code. If you want to se running examples, be sure to checkout the `examples/` directory in this repository.
+The following examples are generated from the unit testing code. 
 
-The `examples/express.js` file is worth a look, especially if you are interested in the creation of an auth token and the instanciation of an object. 
+There are some applications already using this library, checkout https://npmjs.org/package/appdotcouch and https://npmjs.org/package/appdotauth.
 
 **Also be sure to checkout the complete api description at the bottom.**
 
