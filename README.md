@@ -234,9 +234,9 @@ Create a new AppDotNet object with `token`.
 
 Host against which all request are made.
 
-### AppDotNet.version
+### AppDotNet.authHost
 
-Version of the used api.
+Host against which auth request are made.
 
 ### AppDotNet.create(token)
 
