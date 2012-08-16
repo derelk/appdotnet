@@ -7,6 +7,25 @@ var client      = AppDotNet.create(config.access_token),
     savedPostId = null;
 
 describe('AppDotNet', function () {
+  describe('AppDotNet.createAuthenticationUri()', function () {
+    it('returns an uriencoded string', function () {
+      var params = {
+        client_id: '9ah9has9hsaf9hasf9hfsa9hfsa9hsafhhasoh',
+        redirect_uri: 'http://localhost:3000/cb',
+        scope: 'export write_post'
+      };
+
+      var expectedUri = AppDotNet.authHost
+                      + '/oauth/authenticate'
+                      + '?client_id=9ah9has9hsaf9hasf9hfsa9hfsa9hsafhhasoh'
+                      + '&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcb'
+                      + '&scope=export%20write_post'
+                      + '&response_type=code';
+
+      AppDotNet.createAuthenticationUri(params).should.equal(expectedUri);
+    });
+  });
+
   describe('object.getUser()', function () {
     it('returns a user object', function (done) {
       client.getUser(config.user_id, function (err, user) {
