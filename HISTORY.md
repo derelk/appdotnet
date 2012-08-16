@@ -1,3 +1,12 @@
+0.1.2 / 2012-08-16
+==================
+
+  * Removed examples/ directory and its section from README.md
+  * Added note about automatic post generation and deletion to README.md
+  * remove AppDotNet.version, change .host and add .authHost
+  * add tests for AppDotNet.createAuthenticationUri()
+  * Improved README.md
+
 0.1.1 / 2012-08-16
 ==================
 

@@ -1,6 +1,6 @@
 {
   "name": "appdotnet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Wrapper for the App.net HTTP Stream API, following node idioms.",
   "author": "Damien Klinnert <mail@damienklinnert.com>",
   "licence": "MIT",
