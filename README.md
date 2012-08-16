@@ -29,16 +29,18 @@ To run the unit tests, there are several steps to do:
 
 All tests run against the official app.net api, so be sure to have an internet connection. When tests are timing out, try to increase the `scripts.test -> --timeout` value in `package.json`.
 
+**Running this tests will result in automatic post creation, operation and deletion.** If you dislike this, be sure to remove the unit tests for object.createPost() and object.deletePost().
+
 
 
 Examples
 --------
 
-The following examples are generated from the unit testing code. 
+The following examples are generated from the unit testing code. Be sure to checkout the complete api description at the bottom.
 
 There are some applications already using this library, checkout https://npmjs.org/package/appdotcouch and https://npmjs.org/package/appdotauth.
 
-**Also be sure to checkout the complete api description at the bottom.**
+
 
 
 ### AppDotNet
