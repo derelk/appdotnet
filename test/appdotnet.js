@@ -116,6 +116,60 @@ describe('AppDotNet', function () {
     });
   });
 
+  describe('object.muteUser()', function () {
+    it('returns a user object', function (done) {
+      client.muteUser(config.user_id, function (err, user) {
+        should.exist(user);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.muteUser(config.user_id, function (err, user) {
+        should.not.exist(user);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.unmuteUser()', function () {
+    it('returns a user object', function (done) {
+      client.unmuteUser(config.user_id, function (err, user) {
+        should.exist(user);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.unmuteUser(config.user_id, function (err, user) {
+        should.not.exist(user);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
+  describe('object.listMutedUsers()', function () {
+    it('returns user objects', function (done) {
+      client.listMutedUsers(config.user_id, function (err, users) {
+        should.exist(users);
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('returns an error when not authorized', function (done) {
+      errorClient.listMutedUsers(config.user_id, function (err, users) {
+        should.not.exist(users);
+        should.exist(err);
+        done();
+      });
+    });
+  });
+
   describe('object.checkToken()', function () {
     it('returns an auth object', function (done) {
       client.checkToken(function (err, auth) {
