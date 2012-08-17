@@ -29,7 +29,7 @@ To run the unit tests, there are several steps to do:
 
 All tests run against the official app.net api, so be sure to have an internet connection. When tests are timing out, try to increase the `scripts.test -> --timeout` value in `package.json`.
 
-**Running this tests will result in automatic post creation, operation and deletion.** If you dislike this, be sure to remove the unit tests for object.createPost() and object.deletePost().
+**Running this tests will result in automatic post creation, operation and deletion.** If you dislike this, be sure to remove the unit tests for object.createPost() and object.deletePost(). Those tests will mute and unmute one user as well, but you remove this line as well (object.muteUser() and object.unmuteUser()).
 
 
 
