@@ -1,3 +1,8 @@
+0.2.0 / 2012-08-18
+==================
+
+  * added muteUser(), unmuteUser() and listMutedUsers() calls with tests and documentation
+
 0.1.3 / 2012-08-16
 ==================
 

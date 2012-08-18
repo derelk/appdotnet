@@ -1,4 +1,4 @@
-appdotnet v0.1.3
+appdotnet v0.2.0
 ================
 
 A wrapper for the app.net http stream api, following node idioms.
