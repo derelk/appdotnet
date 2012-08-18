@@ -121,6 +121,39 @@ errorClient.listFollowers(config.user_id, function (err, users) {
 });
 ```
 
+### object.muteUser()
+returns a user object.
+
+```js
+client.muteUser(config.user_id, function (err, user) {
+  should.exist(user);
+  should.not.exist(err);
+  done();
+});
+```
+
+### object.unmuteUser()
+returns a user object.
+
+```js
+client.unmuteUser(config.user_id, function (err, user) {
+  should.exist(user);
+  should.not.exist(err);
+  done();
+});
+```
+
+### object.listMutedUsers()
+returns user objects.
+
+```js
+client.listMutedUsers(config.user_id, function (err, users) {
+  should.exist(users);
+  should.not.exist(err);
+  done();
+});
+```
+
 #### object.checkToken()
 returns an auth object.
 
@@ -340,6 +373,34 @@ List users following a user with the given `id` and callback `cb(err, users)`.
 #### Params: 
 
 * **String** *id* 
+
+* **Function** *cb* 
+
+### muteUser(id, cb)
+
+Mute a user with the given `id` and callback `cb(err, user)`.
+
+#### Params: 
+
+* **String** *id* of the user
+
+* **Function** *cb* 
+
+### unmuteUser(id, cb)
+
+Unmute a user with the given `id` and callback `cb(err, user)`.
+
+#### Params: 
+
+* **String** *id* of the user
+
+* **Function** *cb* 
+
+### listMutedUsers(cb)
+
+List muted users and callback `cb(err, user)`.
+
+#### Params: 
 
 * **Function** *cb* 
 
